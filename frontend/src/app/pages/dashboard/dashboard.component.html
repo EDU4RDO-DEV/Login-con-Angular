@@ -1,1 +1,3 @@
-<p>Usuario no autenticado</p>
+<app-nav></app-nav>
+<p *ngIf="!userLoginOn">Usuario no Autenticado</p>
+<p *ngIf="userLoginOn">Usuario Autenticado</p>
