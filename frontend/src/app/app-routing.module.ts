@@ -4,7 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/inicio', pathMatch: 'full'},
+  {path: '', redirectTo: '/inicio', pathMatch: 'full'}, // Si la ruta es vacía, redirige a /inicio
   {path: 'inicio', component:DashboardComponent},
   {path: 'iniciar-sesion', component:LoginComponent}
 ];

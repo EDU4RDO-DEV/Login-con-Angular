@@ -7,15 +7,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Portafolio</a>
+            <a class="nav-link active" aria-current="page" routerLink="/inicio">Portafolio</a>
           </li>
           <li class="nav-item">
             <!--Si no ha iniciado sesión mostrará este botón -->
-            <a *ngIf="!userLoginOn" class="nav-link" href="#">Iniciar sesión</a>
+            <a *ngIf="!userLoginOn" class="nav-link" routerLink="/iniciar-sesion">Iniciar sesión</a>
           </li>
           <li class="nav-item">
             <!--Si ya ha iniciado sesión mostrará este botón -->
-            <a *ngIf="userLoginOn" class="nav-link">Cerrar Sesión</a>
+            <a *ngIf="userLoginOn" class="nav-link" routerLink="/inicio">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
