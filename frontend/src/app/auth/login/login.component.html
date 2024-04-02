@@ -1,1 +1,15 @@
-<p>login works!</p>
+<!--Enlazar formulario con el componente-->
+<form [formGroup]="loginForm" action="">
+    <div class="container">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
+            <!--formControlName detecta la declaración del componente-->
+            <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1"
+                placeholder="name@example.com">
+        </div>
+        <label for="inputPassword5" class="form-label">Contraseña</label>
+        <!--formControlName detecta la declaración del componente-->
+        <input formControlName="password" type="password" id="inputPassword5" class="form-control">
+        <button class="btn btn-primary btn-lg mt-4" type="submit" (click)="login()">Iniciar sesión</button>
+    </div>
+</form>
