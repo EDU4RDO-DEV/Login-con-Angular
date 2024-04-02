@@ -6,10 +6,38 @@
             <!--formControlName detecta la declaración del componente-->
             <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1"
                 placeholder="name@example.com">
+
+            <!--Validaciones del email-->
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                <div *ngIf="email.errors?.['required']">El correo electrónico es obligatorio.</div>
+                <div *ngIf="email.errors?.['email']">
+                    El formato del correo electrónico no es válido.
+                </div>
+                <div *ngIf="email.errors?.['minlength']">
+                    El correo debe tener al menos {{ email.errors?.['minlength'].requiredLength }} caracteres.
+                </div>
+                <div *ngIf="email.errors?.['maxlength']">
+                    El correo no puede tener más de {{ email.errors?.['maxlength'].requiredLength }} caracteres.
+                </div>
+            </div>
         </div>
         <label for="inputPassword5" class="form-label">Contraseña</label>
         <!--formControlName detecta la declaración del componente-->
         <input formControlName="password" type="password" id="inputPassword5" class="form-control">
+
+        <!--Validaciones del password-->
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+            <div *ngIf="password.errors?.['required']">La contraseña es obligatoria.</div>
+            <div *ngIf="password.errors?.['minlength']">
+                La contraseña debe tener al menos {{ password.errors?.['minlength'].requiredLength }} caracteres.
+            </div>
+            <div *ngIf="password.errors?.['maxlength']">
+                La contraseña no puede tener más de {{ password.errors?.['maxlength'].requiredLength }} caracteres.
+            </div>
+            <div *ngIf="password.errors?.['pattern']">
+                La contraseña debe tener al menos una letra mayúscula, una letra minúscula y un número.
+            </div>
+        </div>
         <button class="btn btn-primary btn-lg mt-4" type="submit" (click)="login()">Iniciar sesión</button>
     </div>
 </form>

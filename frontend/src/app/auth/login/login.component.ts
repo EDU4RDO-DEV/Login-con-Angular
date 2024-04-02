@@ -3,26 +3,50 @@ import { FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit{
-
+export class LoginComponent implements OnInit {
   loginForm = this.formBuilder.group({
-    // Valor por defecto, campo requerido, email valido, maximo de caracteres
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(25)]],
-    password: ['', [Validators.required, Validators.maxLength(25)]]
-  })
-  constructor(private formBuilder:FormBuilder) { }
+    // Definición de los campos del formulario con sus respectivas validaciones
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(50),
+        Validators.minLength(6),
+      ],
+    ],
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.maxLength(25),
+        Validators.minLength(6),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
+      ],
+    ],
+  });
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   // Funcion para enviar los datos del formulario
-  login(){
-    if(this.loginForm.valid){
+  login() {
+    if (this.loginForm.valid) {
       console.log('Llamar al servicio de login');
-    }else{
+    } else {
+      this.loginForm.markAllAsTouched(); //Marca los campos como tocados
       alert('Error al ingresar los datos.');
     }
+  }
+
+  // Funciones para obtener los campos del formulario
+  get email() {
+    return this.loginForm.controls.email;
+  }
+
+  get password() {
+    return this.loginForm.controls.password;
   }
 }

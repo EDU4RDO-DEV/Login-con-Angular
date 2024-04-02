@@ -1,1 +1,12 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+/*@import "~bootstrap/dist/css/bootstrap.css";*/
+
+/*
+ * Cambiar el color de los bordes de los campos de formulario
+ */
+.ng-valid:not(form).ng-touched {
+  border-left: 5px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-left: 5px solid #a94442; /* red */
+}
