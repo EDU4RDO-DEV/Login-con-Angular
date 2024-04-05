@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   constructor() {}
   
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
+    this.userLoginOn = true;
   }
 }

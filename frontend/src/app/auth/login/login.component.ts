@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/auth/login.service';
+import { LoginRequest } from 'src/app/services/auth/loginRequest';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,14 +30,19 @@ export class LoginComponent implements OnInit {
       ],
     ],
   });
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {}
 
   // Funcion para enviar los datos del formulario
   login() {
     if (this.loginForm.valid) {
-      console.log('Llamar al servicio de login');
+      this.loginService.login(this.loginForm.value as LoginRequest); //Envia los datos al servicio con la interfaz LoginRequest
+      this.router.navigate(['/inicio']);
     } else {
       this.loginForm.markAllAsTouched(); //Marca los campos como tocados
       alert('Error al ingresar los datos.');
