@@ -41,7 +41,20 @@ export class LoginComponent implements OnInit {
   // Funcion para enviar los datos del formulario
   login() {
     if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value as LoginRequest); //Envia los datos al servicio con la interfaz LoginRequest
+
+      // Enviar los datos al servicio con la interfaz LoginRequest
+      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+        next: (userData) => {
+          console.log(userData);
+        },
+        error: (errorData) => {
+          console.error(errorData);
+        },
+        complete: () => {
+          console.log('Petición completada');
+        }
+      }); 
+
       this.router.navigate(['/inicio']);
     } else {
       this.loginForm.markAllAsTouched(); //Marca los campos como tocados
