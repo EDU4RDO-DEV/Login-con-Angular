@@ -9,6 +9,8 @@ import { LoginRequest } from 'src/app/services/auth/loginRequest';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  loginError: string = '';
+
   loginForm = this.formBuilder.group({
     // Definición de los campos del formulario con sus respectivas validaciones
     email: [
@@ -49,13 +51,15 @@ export class LoginComponent implements OnInit {
         },
         error: (errorData) => {
           console.error(errorData);
+          this.loginError = 'Error al iniciar sesión';
         },
         complete: () => {
+          // Redirigir al usuario a la página de inicio
           console.log('Petición completada');
+          this.router.navigate(['/inicio']);
+          this.loginForm.reset();
         }
       }); 
-
-      this.router.navigate(['/inicio']);
     } else {
       this.loginForm.markAllAsTouched(); //Marca los campos como tocados
       alert('Error al ingresar los datos.');

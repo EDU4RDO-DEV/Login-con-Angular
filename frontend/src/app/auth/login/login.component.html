@@ -1,5 +1,6 @@
 <!--Enlazar formulario con el componente-->
 <form [formGroup]="loginForm" action="">
+    <p class="text-bg-danger">{{loginError}}</p>
     <div class="container">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
