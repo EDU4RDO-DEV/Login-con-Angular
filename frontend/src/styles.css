@@ -1,4 +1,7 @@
 /*@import "~bootstrap/dist/css/bootstrap.css";*/
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /*
  * Cambiar el color de los bordes de los campos de formulario
