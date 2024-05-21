@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID Usuario</th>
+      <th scope="col">Correo Institucional</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ user.id_usuario }}</td>
+      <td>{{ user.correo_institucional }}</td>
+    </tr>
+  </tbody>
+</table>
