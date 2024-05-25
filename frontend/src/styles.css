@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos de Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Estilos de PrimeNG */
+@import 'primeng/resources/themes/saga-blue/theme.css';
+@import 'primeng/resources/primeng.min.css';
+
+/*
+ * Cambiar el color de los bordes de los campos de formulario
+ */
+.ng-valid:not(form).ng-touched {
+  border-left: 5px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-left: 5px solid #f05a58; /* red */
+}
+
+.p-toast .p-toast-message {
+  background-color: #ffcbcb !important;
+  opacity: 0.8 !important;
+}

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/inicio">Universidad Mariano Gálvez</a>
+    <div class="navbar-collapse" *ngIf="loginService.loggedIn">
+      <div class="navbar-nav mr-auto">
+        <button class="btn btn-link nav-link" routerLink="/inicio">Inicio</button>
+        <button class="btn btn-link nav-link" routerLink="/estudiantes">Estudiantes</button>
+        <button class="btn btn-link nav-link" routerLink="/usuarios">Usuarios</button>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <button class="btn btn-link nav-link" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+</nav>
