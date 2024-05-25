@@ -1,23 +1,15 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/inicio">Portafolio</a>
-          </li>
-          <li class="nav-item">
-            <!--Si no ha iniciado sesión mostrará este botón -->
-            <a *ngIf="!userLoginOn" class="nav-link" routerLink="/iniciar-sesion">Iniciar sesión</a>
-          </li>
-          <li class="nav-item">
-            <!--Si ya ha iniciado sesión mostrará este botón -->
-            <a *ngIf="userLoginOn" class="nav-link" routerLink="/inicio">Cerrar Sesión</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/inicio">Universidad Mariano Gálvez</a>
+    <div class="navbar-collapse" *ngIf="loginService.loggedIn">
+      <div class="navbar-nav mr-auto">
+        <button class="btn btn-link nav-link" routerLink="/inicio">Inicio</button>
+        <button class="btn btn-link nav-link" routerLink="/estudiantes">Estudiantes</button>
+        <button class="btn btn-link nav-link" routerLink="/usuarios">Usuarios</button>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <button class="btn btn-link nav-link" (click)="logout()">Cerrar Sesión</button>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

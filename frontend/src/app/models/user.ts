@@ -7,4 +7,5 @@ export interface User {
     fecha_creacion: string;
     ultima_conexion: string;
     estado: string;
+    token?: string;
 }

@@ -3,4 +3,5 @@ export interface Estudiante {
   id_persona: number;
   año_ingreso: number;
   estado: string;
+  carne: string;
 }

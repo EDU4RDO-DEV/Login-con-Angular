@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userLoginOn: boolean = false;
-  constructor() {}
-  
+  userLoginOn: boolean | undefined;
+  grades: any;
+projectMembers: any;
+
+  constructor(private loginService: LoginService) {}
+
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
-    this.userLoginOn = false;
+    this.userLoginOn = this.loginService.loggedIn;
   }
 }

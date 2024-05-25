@@ -1,6 +1,2 @@
-<app-header></app-header>
+<app-nav *ngIf="loginService.loggedIn"></app-nav>
 <router-outlet></router-outlet>
-<!-- <app-dashboard></app-dashboard> -->
-<div class="fixed-bottom">
-  <app-footer></app-footer>
-</div>

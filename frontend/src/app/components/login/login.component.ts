@@ -3,17 +3,19 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
 import { LoginRequest } from 'src/app/services/auth/loginRequest';
+import { MessageService } from 'primeng/api';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
   loginError: string = '';
 
   loginForm = this.formBuilder.group({
-    // Definición de los campos del formulario con sus respectivas validaciones
-    email: [
+    correo_institucional: [
       '',
       [
         Validators.required,
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6),
       ],
     ],
-    password: [
+    clave: [
       '',
       [
         Validators.required,
@@ -32,46 +34,58 @@ export class LoginComponent implements OnInit {
       ],
     ],
   });
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {}
 
-  // Funcion para enviar los datos del formulario
   login() {
     if (this.loginForm.valid) {
-
-      // Enviar los datos al servicio con la interfaz LoginRequest
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
         next: (userData) => {
-          console.log(userData);
+          this.router.navigate(['/inicio']);
+          this.loginForm.reset();
+          this.showToast();
         },
         error: (errorData) => {
           console.error(errorData);
           this.loginError = 'Error al iniciar sesión';
+          if (errorData.status === 400 && errorData.errors) {
+            for (const key in errorData.errors) {
+              this.messageService.add({severity:'error', summary:'Error de validación', detail:`${key}: ${errorData.errors[key]}`});
+            }
+          } else {
+            this.messageService.add({severity:'error', summary:'Error de inicio de sesión', detail:'Error al iniciar sesión. Por favor, inténtalo de nuevo.'});
+          }
         },
         complete: () => {
-          // Redirigir al usuario a la página de inicio
           console.log('Petición completada');
-          this.router.navigate(['/inicio']);
-          this.loginForm.reset();
-        }
-      }); 
+        },
+      });
     } else {
-      this.loginForm.markAllAsTouched(); //Marca los campos como tocados
-      alert('Error al ingresar los datos.');
+      this.loginForm.markAllAsTouched();
+      this.messageService.add({severity:'warning', summary:'Error de validación', detail:'Por favor, completa todos los campos requeridos.'});
     }
   }
 
-  // Funciones para obtener los campos del formulario
-  get email() {
-    return this.loginForm.controls.email;
+  get correo_institucional() {
+    return this.loginForm.controls.correo_institucional;
   }
 
-  get password() {
-    return this.loginForm.controls.password;
+  get clave() {
+    return this.loginForm.controls.clave;
+  }
+
+  showToast() {
+    this.messageService.add({severity:'success', summary: 'Éxito', detail: 'Operación realizada con éxito'});
+  }
+
+  onClick() {
+    this.messageService.add({severity:'success', summary: 'Éxito', detail: 'Botón de PrimeNG clicado'});
   }
 }

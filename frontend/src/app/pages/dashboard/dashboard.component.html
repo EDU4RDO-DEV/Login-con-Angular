@@ -1,3 +1,68 @@
-<app-nav></app-nav>
-<p *ngIf="!userLoginOn">Usuario no Autenticado</p>
-<p *ngIf="userLoginOn">Usuario Autenticado</p>
+<div class="container" *ngIf="!userLoginOn">
+    <div class="alert alert-danger" role="alert">
+        Usuario no Autenticado
+    </div>
+</div>
+
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        Usuario Autenticado
+    </div>
+    <h2 class="my-4" style="text-align: center; font-weight: bold;">Integrantes del Proyecto</h2>
+    <div class="row">
+        <!-- Tarjeta 1 -->
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="assets/img/Eduardo.jpeg" alt="Foto de Eduardo" style="height: 350px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; font-weight: bold;">José Eduardo Guzmán García</h5>
+                    <p class="card-text">Mi némesis... un login</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="assets/img/Allan.jpeg" alt="Foto de Eduardo" style="height: 350px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; font-weight: bold;">Allan Valentín Chub Barahona</h5>
+                    <p class="card-text">"Continúa a pesar de que todos esperen que abandones"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="assets/img/fredy.jpeg" alt="Foto de Eduardo" style="height: 350px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; font-weight: bold;">Fredy Fernando Castellanos Rivera</h5>
+                    <p class="card-text">"404 not found"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="assets/img/Jairo.jpeg" alt="Foto de Eduardo" style="height: 350px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; font-weight: bold;">Kevin Jhon Jairo Rodriguez Cancinos</h5>
+                    <p class="card-text">"La física es experiencia colocada en orden económico"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="assets/img/Rony.jpeg" alt="Foto de Eduardo" style="height: 350px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; font-weight: bold;">Rony Ezequiel Guzmán Chafoya</h5>
+                    <p class="card-text">"Cada persona obtiene la variable para la cual se optimiza"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="assets/img/Eleazar.jpeg" alt="Foto de Eduardo" style="height: 350px; width: 100%; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center; font-weight: bold;">Eleazar Noe Gramajo Girón</h5>
+                    <p class="card-text">"La vida se trata de metas, mientras más metas mejor"</p>
+                </div>
+            </div>
+        </div>
+    </div>
